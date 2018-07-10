@@ -1,6 +1,6 @@
 from strategy_factory import StrategyFactory
 from visualization_factory import VisualizationFactory
-from config import betting_settings, visualization_setting
+from config import betting_settings, visualization_settings
 from exception import StrategyNotFoundException
 import logging
 
@@ -9,10 +9,10 @@ class Simulator:
 
     def __init__(self):
         self.betting_strategy = None
-        self.visualization_setting = None
+        self.visualization_settings = None
 
     def setup(self):
-        self.visualization = VisualizationFactory(visualization_setting).create()
+        self.visualization = VisualizationFactory(visualization_settings).create()
         self.betting_strategy = StrategyFactory(betting_settings).create()
         if self.betting_strategy is None:
             raise StrategyNotFoundException('strategy not found, make sure strategy class exist')

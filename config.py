@@ -7,7 +7,7 @@ betting_settings = {
     'initial_bet': 100
 }
 
-visualization_setting = {
+visualization_settings = {
     'plugin': 'money_history',
     'title': 'betting history',
     'file': BASE_DIR + "\\simulation_result\\visualization\\double_betting_after_lossing.html"
