@@ -10,6 +10,6 @@ betting_settings = {
 visualization_settings = {
     'plugin': 'money_history',
     'title': 'betting history',
-    'file': BASE_DIR + "\\simulation_result\\visualization\\double_betting_after_lossing.html"
+    'file': BASE_DIR + '/simulation_result/visualization/double_betting_after_lossing.html'
 }
 
