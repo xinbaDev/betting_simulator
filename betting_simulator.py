@@ -1,6 +1,6 @@
 from strategy_factory import StrategyFactory
 from visualization_factory import VisualizationFactory
-from config import betting_settings, visualization_settings
+from config import betting_settings, visualization_settings, betting_data_settings
 from exception import StrategyNotFoundException
 import logging
 from random import shuffle
@@ -17,7 +17,7 @@ class Simulator:
         if self.betting_strategy is None:
             raise StrategyNotFoundException('strategy not found, make sure strategy class exist')
         else:
-            self._load_data()
+            self._load_data(betting_data_settings)
 
     def run(self):
         try:
@@ -29,14 +29,16 @@ class Simulator:
                 self.visualization.generate_graph({'x':list(range(len(results))), 'y':[result['current_money'] for result in results]})
                 self.visualization.save()
 
-    def _load_data(self):
+    def _load_data(self, betting_data_settings):
         results = []
         odds_ratios = []
         odds = []
         with open('betting data/processed result/processed_result.csv','r') as fr:
             lines = [line for line in fr]
 
-        shuffle(lines)
+        if betting_data_settings.get('shuffle', None):
+            shuffle(lines)
+
         for line in lines:
             result, odds_ratio, odd_home, odd_away = line.split(",")
             results.append(result)
