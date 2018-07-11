@@ -3,7 +3,7 @@ from visualization_factory import VisualizationFactory
 from config import betting_settings, visualization_settings
 from exception import StrategyNotFoundException
 import logging
-
+from random import shuffle
 
 class Simulator:
 
@@ -34,15 +34,15 @@ class Simulator:
         odds_ratios = []
         odds = []
         with open('betting data/processed result/processed_result.csv','r') as fr:
-            for line in fr:
-                result, odds_ratio, odd_home, odd_away = line.split(",")
-                results.append(result)
-                odds_ratios.append(odds_ratio)
-                odds.append(odd_home)
+            lines = [line for line in fr]
 
-        # results.reverse()
-        # odds_ratios.reverse()
-        # odds.reverse()
+        shuffle(lines)
+        for line in lines:
+            result, odds_ratio, odd_home, odd_away = line.split(",")
+            results.append(result)
+            odds_ratios.append(odds_ratio)
+            odds.append(odd_home)
+
         self.betting_strategy.result = results
         self.betting_strategy.odds_ratio = odds_ratios
         self.betting_strategy.odds = odds
