@@ -32,6 +32,16 @@ python start.py
 
 ## Configuration
 This program stores and reads your settings in _config.py_. Modify values in the following files to manipulate the program behaviour.
+
+### betting_data_settings
+This setting stores betting data config for the program.
+
+| Key | Description | Example |
+| --- | --- | --- |
+| shuffle | whether to shuffle betting data | True |
+
+
+
 ### betting_settings
 This setting stores betting config for the program.
 
