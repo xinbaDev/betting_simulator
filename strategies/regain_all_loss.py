@@ -1,7 +1,7 @@
 from .strategy import Strategy
 from utils import configure_logger
+from config import logging_settings
 
-logger = configure_logger("betting", "RegainAllLoss.csv")
 
 class RegainAllLoss(Strategy):
 
@@ -27,7 +27,10 @@ class RegainAllLoss(Strategy):
             else:
                 current_bet = self._cal_bet_after_lossing(current_money, max_money, self.odds[index+1])
 
-            logger.info("Index:{}, current_money:{}, current_bet:{}, max_money: {}, odd: {}".format(index, current_money, current_bet, max_money, self.odds[index+1]))
+            if logging_settings.get('enable_single_run_logging', False):
+                logger = configure_logger("betting", "RegainAllLoss.csv")
+                logger.info("Index:{}, current_money:{}, current_bet:{}, max_money: {}, odd: {}".format(index, current_money, current_bet, max_money, self.odds[index+1]))
+
             betting_history.append({'index':index, 'current_money':current_money, 'current_bet':current_bet, 'max_money': max_money})
 
         return betting_history
@@ -46,4 +49,6 @@ class RegainAllLoss(Strategy):
 
     # if loss, next bet try to recover from the loss
     def _cal_bet_after_lossing(self, current_money, max_money, odd):
+        if float(odd) == 1:
+            return max_money - current_money
         return (max_money - current_money) / (float(odd) - 1)

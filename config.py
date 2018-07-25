@@ -6,14 +6,22 @@ betting_data_settings = {
 }
 
 betting_settings = {
-    'strategy': 'double_betting_after_winning',
+    'strategy': 'regain_all_loss',
     'initial_money': 10000,
     'initial_bet': 100
 }
 
 visualization_settings = {
-    'plugin': 'money_history',
-    'title': 'betting history',
-    'file': BASE_DIR + '/simulation_result/visualization/double_betting_after_winning.html'
+    'plugin': 'multiple_run_visualization',
+    'title': 'betting stats',
+    'file': BASE_DIR + '/simulation_result/visualization/multiple_run_visualization.html'
 }
 
+stimulator_settings = {
+    'times': 1000
+}
+
+logging_settings = {
+    'enable_mutiple_run_logging': True,
+    'enable_single_run_logging': False
+}

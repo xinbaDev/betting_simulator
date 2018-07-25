@@ -1,5 +1,7 @@
 import importlib
 from utils import get_class_name
+import logging
+
 
 class StrategyFactory:
 
@@ -12,7 +14,7 @@ class StrategyFactory:
         try:
             module = importlib.import_module('strategies.{0}'.format(self.strategy))
         except ImportError:
-            return None
+            logging.exception('import error')
         else:
             strategy_module = getattr(module, get_class_name(self.strategy))
             return strategy_module(

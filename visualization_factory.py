@@ -1,5 +1,7 @@
 import importlib
 from utils import get_class_name
+import logging
+
 
 class VisualizationFactory:
 
@@ -13,7 +15,7 @@ class VisualizationFactory:
         try:
             module = importlib.import_module('visualization.{0}'.format(self.visualization))
         except ImportError:
-            return None
+            logging.exception('import error')
         else:
             strategy_module = getattr(module, get_class_name(self.visualization))
             return strategy_module(self.title, self.file)

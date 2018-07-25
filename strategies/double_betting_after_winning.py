@@ -1,7 +1,7 @@
 from .strategy import Strategy
 from utils import configure_logger
+from config import logging_settings
 
-logger = configure_logger("betting", "DoubleBettingAfterWinning.csv")
 
 class DoubleBettingAfterWinning(Strategy):
 
@@ -26,7 +26,10 @@ class DoubleBettingAfterWinning(Strategy):
             else:
                 current_bet = self._cal_bet_after_lossing()
 
-            logger.info("Index:{}, current_money:{}, current_bet:{}, odds:{}".format(index, current_money,current_bet, odd))
+            if logging_settings.get('enable_single_run_logging', False):
+                logger = configure_logger("betting", "DoubleBettingAfterWinning.csv")
+                logger.info("Index:{}, current_money:{}, current_bet:{}, odds:{}".format(index, current_money,current_bet, odd))
+
             betting_history.append({'index':index, 'current_money':current_money, 'current_bet':current_bet})
 
         return betting_history

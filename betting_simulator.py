@@ -9,10 +9,13 @@ class Simulator:
 
     def __init__(self):
         self.betting_strategy = None
-        self.visualization_settings = None
 
-    def setup(self):
-        self.visualization = VisualizationFactory(visualization_settings).create()
+    def setup(self, enable_visualization):
+        if enable_visualization:
+            self.visualization = VisualizationFactory(visualization_settings).create()
+        else:
+            self.visualization = None
+
         self.betting_strategy = StrategyFactory(betting_settings).create()
         if self.betting_strategy is None:
             raise StrategyNotFoundException('strategy not found, make sure strategy class exist')
@@ -28,6 +31,8 @@ class Simulator:
             if self.visualization:
                 self.visualization.generate_graph({'x':list(range(len(results))), 'y':[result['current_money'] for result in results]})
                 self.visualization.save()
+
+            return results
 
     def _load_data(self, betting_data_settings):
         results = []

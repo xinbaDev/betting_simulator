@@ -1,5 +1,6 @@
 from .strategy import Strategy
 import logging
+from config import logging_settings
 
 class SmallBetting(Strategy):
 
@@ -20,7 +21,9 @@ class SmallBetting(Strategy):
             else:
                 current_bet = self._cal_bet_after_lossing(current_bet)
 
-            logging.info("Index:{}, current_money:{}, current_bet:{}".format(index, current_money,current_bet))
+            if logging_settings.get('enable_single_run_logging', False):
+                logger = configure_logger("betting", "SmallBetting.csv")
+                logger.info("Index:{}, current_money:{}, current_bet:{}".format(index, current_money,current_bet))
 
         return [index, current_money]
 
