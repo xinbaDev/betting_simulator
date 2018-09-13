@@ -1,15 +1,20 @@
 # Betting Simulator
+
+### README English | [中文](README.zh.md)
+
 Betting Simulator is a program that aims at helping people study different betting strategies.
 
-## Idea的来源
-几年前， 有一天和一个朋友聊天，得知他使用一套算法已经通过赌球赚了几千刀。他的算法简单来说就是一旦输了，下一场就加倍赌注，通过这种方法来达到cover之前的损失。算法背后的assumption是，每一场的输赢都是独立事件，这样n次连续输球的概率就是p(输球概率)^n. 其中只要有一次是赢的，之前的全部损失都可以弥补，甚至有时可以小赚，因为连续n次输球的概率是比较小的。
+## Where the idea comes from?
 
-之后在一次饭桌上，另一个朋友又和我说了类似的算法，不过他不是赌球而是线上赌博。一开始赚了些钱，但是后面都输掉了。我当时分析觉得，线上赌博不靠谱，因为赔率都是可以后台设定的，这并不能说明这个算法不行。
+A few years ago, a friend of mine told me he earned a few thousand dollars from betting with the help from his algorithm. The algorithm, simply speaking, was --- once a gambler lost a bet, the betting amount for the next round would be doubled, through which the lost from the previous game could be covered. The assumption behind this algorithm was every single bet was an independent incident, therefore the probability of losing continuously for n times was P(lose)^n. As soon as the gambler won a bet, all lose could all be covered , or even earned a few more coins because the possibility of losing continuously for n times was relatively low.
 
-又过一年，终于4年一度的世界杯来了。各种巧合下我也开了一个TAB账号，开始了我的赌球之旅。先说一下战绩吧。 从6月17号开始，100刀的初始资金，到7月8号为止，账面上balance是168.85刀，收益率是68.85%。
+Another friend told me a similar algorithm when we had lunch together. The only difference would be he was doing online gambling rather than betting with this algorithm.  He earned a bit at the beginning but lost all his money at the end. My thought at that time was online gambling was irrational because the betting rate could be set artificially but it did not mean the algorithm could not be applied.
 
-在不到一个月的时间里面，基本上每天都会下注，操作还是比较频繁的。每次下注的金额都不大，基本都是本金的10%左右，所以每次赚得也不多。因为比起赚了多少钱，我更在意的是验证这个算法到底能不能保证稳定的正收益。不要小看68%的收益率，如果1个月能有稳定50%的增长，那么一年后，本金的增长就是（1+0.5）^12, 也就是接近130倍！这样一年后100刀就变成1.3w刀，三年后就是218,416,400 :money_mouth_face::money_mouth_face::money_mouth_face:。感觉财富自由就在招手有没有！
-但是还是觉得哪里不对，因为这个too good to be true了。 但是具体哪里不对又一时看不出来。于是我产生了用程序来验证这套算法获利性的想法。
+One year later, the World Cup held every 4 years finally arrived. I opened a TAB account by chance, beginning my journey of betting. Let’s get started from my achievement. From 17th June, the initial investment was $100 and the final balance displayed in my account on 8th July was $168.85, with the rate of return of 68.85%.
+
+Within less than a month, I kept betting frequently almost every single day. Every single bet was not huge, basically around 10% of the principal, therefore I did not earn much from a single bet. The thing that I cared about was whether the algorithm was effective or not rather than making profit. Don’t look down on the 68% return rate. If there is a 50% steady increase for every month, then after one year, the principal will be (1+0.5）^12, which is 130 times! Hence the initial $100 becomes $13K after a year, which will turn out to be $218,416,400 🤑🤑🤑 in three years.
+It feels like the financial independence is waving at you, doesn’t it? However, something deep inside tells me that something is a bit weird, because it is too good to be true. But I can’t tell what’s wrong, so I come up with an idea to verify the profitability of this algorithm using programming.
+
 
 ## Installation
 ```
